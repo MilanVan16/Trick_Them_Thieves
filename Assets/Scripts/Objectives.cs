@@ -22,15 +22,15 @@ public class Objectives : MonoBehaviour
 
     [Header("Don't change")]
     [SerializeField]
-    private  Material _timeBasedObjectiveMaterial, _pickupObjectiveMaterial;
+    private Material _timeBasedObjectiveMaterial, _pickupObjectiveMaterial;
     void Start()
     {
-        if(_timeBasedObjective)
+        if (_timeBasedObjective)
         {
-            gameObject.GetComponent<MeshRenderer>().material= _timeBasedObjectiveMaterial   ;
+            gameObject.GetComponent<MeshRenderer>().material = _timeBasedObjectiveMaterial;
         }
 
-        if(_pickupObjective)
+        if (_pickupObjective)
         {
             gameObject.GetComponent<MeshRenderer>().material = _pickupObjectiveMaterial;
         }
@@ -45,48 +45,67 @@ public class Objectives : MonoBehaviour
 
     private void CharacterInteraction()
     {
-        Vector3 VectorDistance = _mainCharacter.transform.position - transform.position;
-        float distance = VectorDistance.magnitude;
+        Vector3 vectorFromCharacterToThis = transform.position - _mainCharacter.transform.position;
+        float distance = vectorFromCharacterToThis.magnitude;
 
         if (distance < General_Game.ObjectiveRadius)
         {
-            Objective();
+            Objective(vectorFromCharacterToThis);
         }
 
     }
 
-    private void Objective()
+    private void Objective(Vector3 vectorFromCharacterToThis)
     {
         if (_pickupObjective)
         {
-            PickupObjectiveInput();
+            PickupObjectiveInput(vectorFromCharacterToThis);
         }
 
         if (_timeBasedObjective)
         {
-            TimeBasedObjectiveInput();
+            TimeBasedObjectiveInput(vectorFromCharacterToThis);
         }
 
     }
 
-    private void PickupObjectiveInput()
+    private void PickupObjectiveInput(Vector3 vectorFromCharacterToThis)
     {
+        RaycastHit hit;
+
         if (Input.GetKeyDown(KeyCode.E))
         {
-            PickupObjective();
-        }
+            if (Physics.Raycast(_mainCharacter.transform.position, vectorFromCharacterToThis.normalized, out hit))
+            {
+                if (hit.collider.gameObject == this.gameObject)
+                {
+                    PickupObjective();
+                }
 
+            }
+        }
     }
     private void PickupObjective()
     {
         Destroy(gameObject);
     }
 
-    private void TimeBasedObjectiveInput()
+    private void TimeBasedObjectiveInput(Vector3 vectorFromCharacterToThis)
     {
         if (Input.GetKey(KeyCode.E))
         {
-            TimeBasedObjective();
+            RaycastHit hit;
+
+
+            if (Physics.Raycast(_mainCharacter.transform.position, vectorFromCharacterToThis.normalized, out hit))
+            {
+                if (hit.collider.gameObject == this.gameObject)
+                {
+                    TimeBasedObjective();
+                }
+
+            }
+
         }
 
     }

@@ -5,10 +5,11 @@ public class Camera_Logic : MonoBehaviour
 
     [SerializeField]
     private GameObject _mainCharacter;
+    [SerializeField]
     private Vector3 _offset;
+    
     void Start()
     {
-        _offset = transform.position - _mainCharacter.transform.position;
     }
 
     private void LateUpdate()

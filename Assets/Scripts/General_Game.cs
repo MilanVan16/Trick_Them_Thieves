@@ -15,6 +15,8 @@ public static class General_Game : object
     [HideInInspector]
     public static float ObjectiveRadius = 2;
 
+
+
     [HideInInspector]
     public static bool IsHidden;
 }

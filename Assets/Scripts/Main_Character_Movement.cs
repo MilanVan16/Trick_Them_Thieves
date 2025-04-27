@@ -6,14 +6,18 @@ public class Main_Character_Movement : MonoBehaviour
     [SerializeField]
     private float _walkspeed, _runMultiplier, _amountOfStaminaSeconds, _staminaReplenishMultiplier, _rotationSpeed, _runRotationSpeedMultiplier, _standUpYScale, _crouchYScale;
 
+    [SerializeField]
+    private GameObject _spawnPosition;
 
-    public float _currentStamina;
+    private float _currentStamina;
 
     private CharacterController _controller;
 
-    public bool _isCrouching;
+    private bool _isCrouching;
     void Start()
     {
+        transform.position = new Vector3(_spawnPosition.transform.position.x,_spawnPosition.transform.position.y + _standUpYScale,_spawnPosition.transform.position.z);
+
         _controller = gameObject.GetComponent<CharacterController>();
         _currentStamina = _amountOfStaminaSeconds;
     }
