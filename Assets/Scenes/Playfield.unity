@@ -1683,7 +1683,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9103942439517396819, guid: 08533651dc703a94b83a7f0ea6e95940, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2020491630}
+    - targetCorrespondingSourceObject: {fileID: 9103942439517396819, guid: 08533651dc703a94b83a7f0ea6e95940, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2020491629}
   m_SourcePrefab: {fileID: 100100000, guid: 08533651dc703a94b83a7f0ea6e95940, type: 3}
 --- !u!1 &429023069
 GameObject:
@@ -3160,7 +3166,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9103942439517396819, guid: 08533651dc703a94b83a7f0ea6e95940, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1854692065}
+    - targetCorrespondingSourceObject: {fileID: 9103942439517396819, guid: 08533651dc703a94b83a7f0ea6e95940, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1854692064}
   m_SourcePrefab: {fileID: 100100000, guid: 08533651dc703a94b83a7f0ea6e95940, type: 3}
 --- !u!1 &743025557
 GameObject:
@@ -5048,7 +5060,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9103942439517396819, guid: 08533651dc703a94b83a7f0ea6e95940, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1516838898}
+    - targetCorrespondingSourceObject: {fileID: 9103942439517396819, guid: 08533651dc703a94b83a7f0ea6e95940, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1516838897}
   m_SourcePrefab: {fileID: 100100000, guid: 08533651dc703a94b83a7f0ea6e95940, type: 3}
 --- !u!1001 &1082041740
 PrefabInstance:
@@ -6354,7 +6372,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9103942439517396819, guid: 08533651dc703a94b83a7f0ea6e95940, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1737867261}
+    - targetCorrespondingSourceObject: {fileID: 9103942439517396819, guid: 08533651dc703a94b83a7f0ea6e95940, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1737867260}
   m_SourcePrefab: {fileID: 100100000, guid: 08533651dc703a94b83a7f0ea6e95940, type: 3}
 --- !u!1001 &1448541842
 PrefabInstance:
@@ -6801,6 +6825,50 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.9693408, y: 1.99863, z: 0.3074051}
   m_Center: {x: -7.44668, y: 1.0034003, z: 0.9052717}
+--- !u!1 &1516838896 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9103942439517396819, guid: 08533651dc703a94b83a7f0ea6e95940, type: 3}
+  m_PrefabInstance: {fileID: 1032900365}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1516838897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516838896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c9c9261f46d2ad4d97093854764a49f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _imageUIPrefab: {fileID: 3040843206863919578, guid: 960bf309a333f5047a5aafe54028fe5f, type: 3}
+  _canvas: {fileID: 1409093481}
+  _text: Hold E to search
+  _hasBoundary: 0
+  _radius: 0
+  _isObjective: 1
+  _isAHidingObject: 0
+--- !u!114 &1516838898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516838896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13effc95b324d114b9e3ecef8bb3e14d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _imageUIPrefab: {fileID: 3040843206863919578, guid: 960bf309a333f5047a5aafe54028fe5f, type: 3}
+  _canvas: {fileID: 1409093481}
+  _text: Find phone code
+  _yOffset: 0
+  _hasBoundary: 0
+  _radius: 0
+  _isObjective: 1
+  _isAHidingObject: 0
 --- !u!1001 &1549137455
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7016,6 +7084,50 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -4351069561512351552, guid: 445c9415ee01546448fb17af6551ab33, type: 3}
+--- !u!1 &1563961657 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9103942439517396819, guid: 08533651dc703a94b83a7f0ea6e95940, type: 3}
+  m_PrefabInstance: {fileID: 1632838417}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1563961658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1563961657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c9c9261f46d2ad4d97093854764a49f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _imageUIPrefab: {fileID: 3040843206863919578, guid: 960bf309a333f5047a5aafe54028fe5f, type: 3}
+  _canvas: {fileID: 1409093481}
+  _text: Press E to Pickup
+  _hasBoundary: 0
+  _radius: 0
+  _isObjective: 1
+  _isAHidingObject: 0
+--- !u!114 &1563961659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1563961657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13effc95b324d114b9e3ecef8bb3e14d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _imageUIPrefab: {fileID: 3040843206863919578, guid: 960bf309a333f5047a5aafe54028fe5f, type: 3}
+  _canvas: {fileID: 1409093481}
+  _text: Charger
+  _yOffset: 0
+  _hasBoundary: 0
+  _radius: 0
+  _isObjective: 1
+  _isAHidingObject: 0
 --- !u!1001 &1621677410
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7198,7 +7310,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9103942439517396819, guid: 08533651dc703a94b83a7f0ea6e95940, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1563961659}
+    - targetCorrespondingSourceObject: {fileID: 9103942439517396819, guid: 08533651dc703a94b83a7f0ea6e95940, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1563961658}
   m_SourcePrefab: {fileID: 100100000, guid: 08533651dc703a94b83a7f0ea6e95940, type: 3}
 --- !u!1 &1712620506
 GameObject:
@@ -7522,6 +7640,50 @@ Transform:
   - {fileID: 16529300}
   m_Father: {fileID: 850229803}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1737867259 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9103942439517396819, guid: 08533651dc703a94b83a7f0ea6e95940, type: 3}
+  m_PrefabInstance: {fileID: 1443815152}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1737867260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737867259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c9c9261f46d2ad4d97093854764a49f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _imageUIPrefab: {fileID: 3040843206863919578, guid: 960bf309a333f5047a5aafe54028fe5f, type: 3}
+  _canvas: {fileID: 1409093481}
+  _text: Hold E to charge
+  _hasBoundary: 0
+  _radius: 0
+  _isObjective: 1
+  _isAHidingObject: 0
+--- !u!114 &1737867261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737867259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13effc95b324d114b9e3ecef8bb3e14d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _imageUIPrefab: {fileID: 3040843206863919578, guid: 960bf309a333f5047a5aafe54028fe5f, type: 3}
+  _canvas: {fileID: 1409093481}
+  _text: Charge phone
+  _yOffset: 0
+  _hasBoundary: 0
+  _radius: 0
+  _isObjective: 1
+  _isAHidingObject: 0
 --- !u!1 &1741756146
 GameObject:
   m_ObjectHideFlags: 0
@@ -7622,6 +7784,11 @@ Transform:
   - {fileID: 933013357}
   m_Father: {fileID: 1960523135}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1785353550 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9103942439517396819, guid: 08533651dc703a94b83a7f0ea6e95940, type: 3}
+  m_PrefabInstance: {fileID: 739657750}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1795478120
 GameObject:
   m_ObjectHideFlags: 0
@@ -7732,6 +7899,45 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9174726907976707731, guid: 08533651dc703a94b83a7f0ea6e95940, type: 3}
   m_PrefabInstance: {fileID: 739657750}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1854692064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1785353550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c9c9261f46d2ad4d97093854764a49f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _imageUIPrefab: {fileID: 3040843206863919578, guid: 960bf309a333f5047a5aafe54028fe5f, type: 3}
+  _canvas: {fileID: 1409093481}
+  _text: Hold E to Restart
+  _hasBoundary: 0
+  _radius: 0
+  _isObjective: 1
+  _isAHidingObject: 0
+--- !u!114 &1854692065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1785353550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13effc95b324d114b9e3ecef8bb3e14d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _imageUIPrefab: {fileID: 3040843206863919578, guid: 960bf309a333f5047a5aafe54028fe5f, type: 3}
+  _canvas: {fileID: 1409093481}
+  _text: Wifi
+  _yOffset: 0
+  _hasBoundary: 0
+  _radius: 0
+  _isObjective: 1
+  _isAHidingObject: 0
 --- !u!1 &1866158819
 GameObject:
   m_ObjectHideFlags: 0
@@ -8107,6 +8313,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1795478121}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2020491628 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9103942439517396819, guid: 08533651dc703a94b83a7f0ea6e95940, type: 3}
+  m_PrefabInstance: {fileID: 398791230}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2020491629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2020491628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c9c9261f46d2ad4d97093854764a49f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _imageUIPrefab: {fileID: 3040843206863919578, guid: 960bf309a333f5047a5aafe54028fe5f, type: 3}
+  _canvas: {fileID: 1409093481}
+  _text: Hold E to repair
+  _hasBoundary: 0
+  _radius: 0
+  _isObjective: 1
+  _isAHidingObject: 0
+--- !u!114 &2020491630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2020491628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13effc95b324d114b9e3ecef8bb3e14d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _imageUIPrefab: {fileID: 3040843206863919578, guid: 960bf309a333f5047a5aafe54028fe5f, type: 3}
+  _canvas: {fileID: 1409093481}
+  _text: Electricity
+  _yOffset: 0
+  _hasBoundary: 0
+  _radius: 0
+  _isObjective: 1
+  _isAHidingObject: 0
 --- !u!1001 &2078200149
 PrefabInstance:
   m_ObjectHideFlags: 0
