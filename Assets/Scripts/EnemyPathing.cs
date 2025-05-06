@@ -37,7 +37,8 @@ public class EnemyPatrol : MonoBehaviour
 
         }
 
-        _agent.SetDestination(_waypointsPerObjective[General_Game.CurrentDoneObjectives][0].position);
+       // _agent.SetDestination(_waypointsPerObjective[General_Game.CurrentDoneObjectives][0].position);
+        _agent.SetDestination(_waypointsPerObjective[0][0].position);
         _agent.updateRotation = true;
     }
 

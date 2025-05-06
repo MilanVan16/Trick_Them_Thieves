@@ -7,6 +7,9 @@ public static class General_Game : object
     public static float _timer;
 
     [HideInInspector]
+    public static float _policeTimer;
+
+    [HideInInspector]
     public static int CurrentDoneObjectives = 0;
 
     [HideInInspector]
