@@ -63,12 +63,16 @@ public class EnemyPatrol : MonoBehaviour
 
         if(_currentObjectiveWaypointCollection != General_Game.CurrentDoneObjectives)
         {
-            _currentObjectiveWaypointCollection = General_Game.CurrentDoneObjectives;
-            _agent.ResetPath();
-            _currentWaypoint = 0;
+            if(!General_Game.IsPoliceCalled)
+            {
+                _currentObjectiveWaypointCollection = General_Game.CurrentDoneObjectives;
+                _agent.ResetPath();
+                _currentWaypoint = 0;
+            }
+           
         }
 
-        if(General_Game.IsPoliceCalled && _currentObjectiveWaypointCollection == (_waypointCollectionPerObjective.Length - 1))
+        if(General_Game.IsPoliceCalled)
         {
             if(!_isPoliceWaypointSet)
             {

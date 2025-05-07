@@ -47,13 +47,14 @@ public class Game_Logic : MonoBehaviour
         if(!_policeIsCalled)
         {
             ObjectivesLeft();
-            GameOver();
+
         }
 
         if (_policeCallingTimer <= _policeCallingDuration)
         {
             CountTimer();
             SetTimer();
+            GameOver();
         }
 
             CallPolice();

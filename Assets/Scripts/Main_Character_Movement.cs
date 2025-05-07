@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Main_Character_Movement : MonoBehaviour
 {
@@ -14,6 +15,12 @@ public class Main_Character_Movement : MonoBehaviour
     private CharacterController _controller;
 
     private bool _isCrouching;
+
+    #region Stamina UI
+    [Header("Stamina UI")]
+    [SerializeField]
+    private Slider _staminaSlider;
+    #endregion
     void Start()
     {
         transform.position = new Vector3(_spawnPosition.transform.position.x,_spawnPosition.transform.position.y + _standUpYScale,_spawnPosition.transform.position.z);
@@ -27,6 +34,8 @@ public class Main_Character_Movement : MonoBehaviour
     {
         Movement();
         Crouching();
+
+        _staminaSlider.value = _currentStamina /_amountOfStaminaSeconds;
     }
 
     private void Movement()
