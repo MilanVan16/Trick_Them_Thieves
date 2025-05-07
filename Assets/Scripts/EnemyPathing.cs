@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.AI;
+using System.Linq;
 
 public class EnemyPatrol : MonoBehaviour
 {
@@ -16,13 +17,18 @@ public class EnemyPatrol : MonoBehaviour
 
     private int _currentObjectiveWaypointCollection = 0;
     private int _currentWaypoint = 0;
+
+    private float _originalSpeedThieves;
+
+    private bool _isPoliceWaypointSet;
     #endregion
 
     void Start()
     {
         _agent = GetComponent<NavMeshAgent>();
 
-        _waypointsPerObjective = new Transform[General_Game.ObjectivesCount][];
+        //+2 because of the 0 objective and police objective
+        _waypointsPerObjective = new Transform[General_Game.ObjectivesCount +2][];
 
         for (int i = 0; i <= _waypointCollectionPerObjective.Length - 1; i++)
         {
@@ -40,6 +46,9 @@ public class EnemyPatrol : MonoBehaviour
        // _agent.SetDestination(_waypointsPerObjective[General_Game.CurrentDoneObjectives][0].position);
         _agent.SetDestination(_waypointsPerObjective[0][0].position);
         _agent.updateRotation = true;
+
+        _originalSpeedThieves = _agent.speed;
+
     }
 
     void Update()
@@ -58,13 +67,22 @@ public class EnemyPatrol : MonoBehaviour
             _agent.ResetPath();
             _currentWaypoint = 0;
         }
-    }
-    private void OnTriggerEnter(Collider other)   // I tried using OnCollision but couldn't get it to work but on trigger works
-    {
-        if (other.CompareTag("Player"))
+
+        if(General_Game.IsPoliceCalled && _currentObjectiveWaypointCollection == (_waypointCollectionPerObjective.Length - 1))
         {
-            Debug.Log("Enemy touched the Player (Trigger)! Game Over!");
-            Time.timeScale = 0f; // Freeze the game
+            if(!_isPoliceWaypointSet)
+            {
+                // take the last waypoint collection
+                _currentObjectiveWaypointCollection = _waypointCollectionPerObjective.Length - 1;
+                _agent.ResetPath();
+                _currentWaypoint = 0;
+
+                _agent.speed = _originalSpeedThieves * General_Game.PoliceCalledThievesMultiplier;
+                _isPoliceWaypointSet = true;
+            }
+           
         }
+
+        
     }
 }

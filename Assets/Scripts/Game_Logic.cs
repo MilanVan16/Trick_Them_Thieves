@@ -30,13 +30,15 @@ public class Game_Logic : MonoBehaviour
     #endregion
     void Start()
     {
-        General_Game._timer = 60;
-        General_Game._policeTimer = 60;
+        General_Game.Timer = 60;
+        General_Game.PoliceTimer = 60;
         General_Game.CurrentDoneObjectives = 0;
         General_Game.ObjectivesCount = 5;
         General_Game.ObjectiveRadius = 2;
+        General_Game.PoliceCalledThievesMultiplier = 2f;
 
         General_Game.IsHidden = false;
+        General_Game.IsPoliceCalled = false;
     }
 
     // Update is called once per frame
@@ -44,13 +46,13 @@ public class Game_Logic : MonoBehaviour
     {
         if(!_policeIsCalled)
         {
-            CountTimer();
             ObjectivesLeft();
             GameOver();
         }
 
         if (_policeCallingTimer <= _policeCallingDuration)
         {
+            CountTimer();
             SetTimer();
         }
 
@@ -65,22 +67,22 @@ public class Game_Logic : MonoBehaviour
 
     private void CountTimer()
     {
-        General_Game._timer -= Time.deltaTime;
+        General_Game.Timer -= Time.deltaTime;
     }
 
     private void SetTimer()
     {
-        _timer.text = $"Time left: {(int)General_Game._timer}";
+        _timer.text = $"Time left: {(int)General_Game.Timer}";
     }
 
     private void ObjectivesLeft()
     {
-        _objectives.text = $"Objectives done: {General_Game.ObjectivesCount - General_Game.CurrentDoneObjectives}";
+        _objectives.text = $"Objectives to do: {General_Game.ObjectivesCount - General_Game.CurrentDoneObjectives}";
     }
 
     private void GameOver()
     {
-        if (General_Game._timer <= 0)
+        if (General_Game.Timer <= 0)
         {
             SceneManager.LoadScene("GameOver");
         }
@@ -104,15 +106,18 @@ public class Game_Logic : MonoBehaviour
         if(_policeCallingTimer >= _policeCallingDuration)
         {
             _timer.color = Color.green;
-            _timer.text = $"Time left until police arrives: {(int)General_Game._policeTimer}";
-            General_Game._policeTimer -= Time.deltaTime;
+            _timer.text = $"Time left until police arrives: {(int)General_Game.PoliceTimer}";
+            _objectives.text = "Try to survive";
+            _objectives.faceColor = Color.red;
+            General_Game.PoliceTimer -= Time.deltaTime;
+            General_Game.IsPoliceCalled = true;
         }
 
        
     }
     private void CompletedGame()
     {
-        if (General_Game._policeTimer <= 0)
+        if (General_Game.PoliceTimer <= 0)
         {
             SceneManager.LoadScene("GameWon");
         }

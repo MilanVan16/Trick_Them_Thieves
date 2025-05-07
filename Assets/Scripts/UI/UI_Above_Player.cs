@@ -17,7 +17,6 @@ public class UI_Above_Player : MonoBehaviour
     [Header("text of name")]
     [SerializeField]
     private string _text;
-    private float _yOffset;
 
     [Header("Option 1")]
     [SerializeField]
@@ -46,14 +45,14 @@ public class UI_Above_Player : MonoBehaviour
 
         _textUI.text = _text;
 
-        _yOffset = _mainCharacter.transform.localScale.y + 0.1f;
+        //_yOffset = _mainCharacter.transform.localScale.y + 0.1f;
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        _imageUI.transform.position = _mainCharacter.transform.position + new Vector3(0, _yOffset, 0);
+        _imageUI.transform.position = _mainCharacter.transform.position + General_Game.UIOffset;
 
         if (_hasBoundary)
         {
@@ -131,7 +130,11 @@ public class UI_Above_Player : MonoBehaviour
 
     private void OnDestroy()
     {
-        _imageUI.gameObject.SetActive(false);
+        if (_imageUI != null)
+        {
+            _imageUI.gameObject.SetActive(false);
+        }
+
 
         
     }

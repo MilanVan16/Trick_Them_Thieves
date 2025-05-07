@@ -20,8 +20,7 @@ public class UI_Above_Objects : MonoBehaviour
     [Header("Add ofsset (not needed) and text of name")]
     [SerializeField]
     private string _text;
-    [SerializeField]
-    private float _yOffset = 0;
+
 
     [Header("Optional Option 1")]
     [SerializeField]
@@ -41,17 +40,17 @@ public class UI_Above_Objects : MonoBehaviour
     void Start()
     {
         _mainCharacter = GameObject.FindWithTag("Player");
-        if (_yOffset == 0)
-        {
-            _yOffset = transform.position.y + transform.localScale.y / 4;
-        }
+        //if (_yOffset == 0)
+        //{
+        //    _yOffset = transform.position.y + transform.localScale.y / 4;
+        //}
         _imageUI = Instantiate(_imageUIPrefab);
         _textUI = _imageUI.GetComponentInChildren<TextMeshProUGUI>();
 
         _imageUI.transform.SetParent(_canvas.transform);
 
         _textUI.text = _text;
-        _imageUI.transform.position = transform.position + new Vector3(0, _yOffset, 0);
+        _imageUI.transform.position = transform.position + General_Game.UIOffset;
 
         if (_isObjective || _hasBoundary)
         {
@@ -147,7 +146,10 @@ public class UI_Above_Objects : MonoBehaviour
     }
     private void OnDestroy()
     {
-        _imageUI.gameObject.SetActive(false);
+        if (_imageUI != null)
+        {
+            _imageUI.gameObject.SetActive(false);
+        }
 
     }
 

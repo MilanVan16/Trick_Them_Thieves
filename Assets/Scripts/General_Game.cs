@@ -3,11 +3,18 @@ using UnityEngine;
 
 public static class General_Game : object
 {
+    //RESEY
     [HideInInspector]
-    public static float _timer;
+    public static float Timer;
 
     [HideInInspector]
-    public static float _policeTimer;
+    public static float PoliceTimer;
+
+    [HideInInspector]
+    public static bool IsPoliceCalled;
+
+    [HideInInspector]
+    public static float PoliceCalledThievesMultiplier;
 
     [HideInInspector]
     public static int CurrentDoneObjectives = 0;
@@ -22,4 +29,8 @@ public static class General_Game : object
 
     [HideInInspector]
     public static bool IsHidden;
+
+    //DONT RESET 
+    [HideInInspector]
+    public static Vector3 UIOffset =  new Vector3(0,6,-2.5f);
 }
