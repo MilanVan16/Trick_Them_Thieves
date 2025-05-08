@@ -2,9 +2,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.AI;
 using System.Linq;
+using System.Collections;
 
 public class EnemyPatrol : MonoBehaviour
 {
+    private bool isStunned = false;
+
     #region Enemy pathing
     [SerializeField]
     private Transform[] _waypointCollectionPerObjective; // Drag Waypoints into inspector if we make a longer path
@@ -51,6 +54,23 @@ public class EnemyPatrol : MonoBehaviour
 
     }
 
+    public void Stun(float duration)
+    {
+        if (!isStunned)
+            StartCoroutine(StunCoroutine(duration));
+    }
+
+    private IEnumerator StunCoroutine(float duration)
+    {
+        isStunned = true;
+        GetComponent<NavMeshAgent>().isStopped = true;
+
+        yield return new WaitForSeconds(duration);
+
+        isStunned = false;
+        GetComponent<NavMeshAgent>().isStopped = false;
+    }
+
     void Update()
     {
         if (_agent.remainingDistance <= _agent.stoppingDistance && !_agent.pathPending)
@@ -87,6 +107,9 @@ public class EnemyPatrol : MonoBehaviour
            
         }
 
-        
+        if (isStunned) return;
+
+
+
     }
 }

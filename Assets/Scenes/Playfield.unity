@@ -4104,6 +4104,23 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 65106967}
   m_SourcePrefab: {fileID: 100100000, guid: 5bdde24fe4776464a8d11949232e0c2c, type: 3}
+--- !u!1 &841543488 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9168633259494293487, guid: 0dcd1306a310c894e950bfa9fb9759a1, type: 3}
+  m_PrefabInstance: {fileID: 3216533350082995453}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &841543489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 841543488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63e19a76492e12d4ba534aa9b8e18cb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &844106578
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5274,6 +5291,7 @@ MonoBehaviour:
   _standUpYScale: 1
   _crouchYScale: 0.5
   _spawnPosition: {fileID: 818535680}
+  stunItemPrefab: {fileID: 841543488}
   _staminaSlider: {fileID: 830041709}
 --- !u!23 &1007195059
 MeshRenderer:
@@ -10500,6 +10518,66 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c982e591ea5e6754f8431ec375b43771, type: 3}
+--- !u!1001 &3216533350082995453
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 903472718464555462, guid: 0dcd1306a310c894e950bfa9fb9759a1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -13.857698
+      objectReference: {fileID: 0}
+    - target: {fileID: 903472718464555462, guid: 0dcd1306a310c894e950bfa9fb9759a1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 903472718464555462, guid: 0dcd1306a310c894e950bfa9fb9759a1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10.0387745
+      objectReference: {fileID: 0}
+    - target: {fileID: 903472718464555462, guid: 0dcd1306a310c894e950bfa9fb9759a1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 903472718464555462, guid: 0dcd1306a310c894e950bfa9fb9759a1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 903472718464555462, guid: 0dcd1306a310c894e950bfa9fb9759a1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 903472718464555462, guid: 0dcd1306a310c894e950bfa9fb9759a1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 903472718464555462, guid: 0dcd1306a310c894e950bfa9fb9759a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 903472718464555462, guid: 0dcd1306a310c894e950bfa9fb9759a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 903472718464555462, guid: 0dcd1306a310c894e950bfa9fb9759a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9168633259494293487, guid: 0dcd1306a310c894e950bfa9fb9759a1, type: 3}
+      propertyPath: m_Name
+      value: StunItem
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9168633259494293487, guid: 0dcd1306a310c894e950bfa9fb9759a1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 841543489}
+  m_SourcePrefab: {fileID: 100100000, guid: 0dcd1306a310c894e950bfa9fb9759a1, type: 3}
 --- !u!1001 &9017553543685442547
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10596,3 +10674,4 @@ SceneRoots:
   - {fileID: 818535681}
   - {fileID: 1960523135}
   - {fileID: 2007084798}
+  - {fileID: 3216533350082995453}

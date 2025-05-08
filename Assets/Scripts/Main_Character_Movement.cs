@@ -16,6 +16,9 @@ public class Main_Character_Movement : MonoBehaviour
 
     private bool _isCrouching;
 
+    public GameObject stunItemPrefab;  
+
+
     #region Stamina UI
     [Header("Stamina UI")]
     [SerializeField]
@@ -36,6 +39,16 @@ public class Main_Character_Movement : MonoBehaviour
         Crouching();
 
         _staminaSlider.value = _currentStamina /_amountOfStaminaSeconds;
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            DropStunItem();
+        }
+    }
+    void DropStunItem()
+    {
+        Vector3 dropPosition = transform.position + -transform.forward; // Drop in front
+        Instantiate(stunItemPrefab, dropPosition, Quaternion.identity);
     }
 
     private void Movement()
