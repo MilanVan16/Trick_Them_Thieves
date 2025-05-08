@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -29,7 +28,7 @@ public class Main_Character_Movement : MonoBehaviour
     #endregion
     void Start()
     {
-        transform.position = new Vector3(_spawnPosition.transform.position.x,_spawnPosition.transform.position.y + _standUpYScale,_spawnPosition.transform.position.z);
+        transform.position = new Vector3(_spawnPosition.transform.position.x, _spawnPosition.transform.position.y + _standUpYScale, _spawnPosition.transform.position.z);
 
         _controller = gameObject.GetComponent<CharacterController>();
         _currentStamina = _amountOfStaminaSeconds;
@@ -41,7 +40,7 @@ public class Main_Character_Movement : MonoBehaviour
         Movement();
         Crouching();
 
-        _staminaSlider.value = _currentStamina /_amountOfStaminaSeconds;
+        _staminaSlider.value = _currentStamina / _amountOfStaminaSeconds;
 
         if (transform.localScale.y == _crouchYScale)
             _isCrouching = true;
@@ -71,7 +70,8 @@ public class Main_Character_Movement : MonoBehaviour
         Vector3 movement = Vector3.zero;
 
         movement = Walking(movement);
-        movement = Running(movement);
+        if (!_isCrouching)
+            movement = Running(movement);
         CharacterLookAtRun(movement);
 
         _controller.Move(movement * Time.deltaTime);
@@ -141,12 +141,12 @@ public class Main_Character_Movement : MonoBehaviour
     }
     private void Crouching()
     {
-        if (Input.GetKeyDown(KeyCode.R) && _isCrouching ==false)
+        if (Input.GetKeyDown(KeyCode.R) && _isCrouching == false)
         {
             StartCrouching();
         }
 
-        if(Input.GetKeyDown(KeyCode.R) && _isCrouching == true)
+        if (Input.GetKeyDown(KeyCode.R) && _isCrouching == true)
         {
             StandUp();
         }
@@ -159,14 +159,14 @@ public class Main_Character_Movement : MonoBehaviour
     }
     private void StartCrouching()
     {
-        transform.localScale = new Vector3(transform.localScale.x,_crouchYScale ,transform.localScale.z);
+        transform.localScale = new Vector3(transform.localScale.x, _crouchYScale, transform.localScale.z);
         transform.position = new Vector3(transform.position.x, transform.position.y - _crouchYScale, transform.position.z);
         Physics.SyncTransforms();
     }
     private void StandUp()
     {
         transform.localScale = new Vector3(transform.localScale.x, _standUpYScale, transform.localScale.z);
-        transform.position = new Vector3(transform.position.x, transform.position.y + _standUpYScale/2, transform.position.z);
+        transform.position = new Vector3(transform.position.x, transform.position.y + _standUpYScale / 2, transform.position.z);
         Physics.SyncTransforms();
     }
 
