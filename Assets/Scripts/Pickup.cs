@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class StunItem : MonoBehaviour
+public class StunPickup : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
@@ -8,13 +8,6 @@ public class StunItem : MonoBehaviour
         if (player != null)
         {
             player.PickUpStunItem();
-            Destroy(gameObject);
-        }
-
-        EnemyPatrol enemy = other.GetComponent<EnemyPatrol>();
-        if (enemy != null)
-        {
-            enemy.Stun(2f);
             Destroy(gameObject);
         }
     }

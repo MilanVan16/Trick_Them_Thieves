@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 270906388552758844}
   - component: {fileID: 1397364170354908364}
   - component: {fileID: 2562992701577553360}
+  - component: {fileID: 1346991950432398804}
   m_Layer: 0
   m_Name: StunItem
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 9168633259494293487}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.857698, y: -3.612079, z: 10.0387745}
+  m_LocalPosition: {x: -13.857698, y: 3.81, z: 10.0387745}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -108,3 +109,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1346991950432398804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9168633259494293487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63e19a76492e12d4ba534aa9b8e18cb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

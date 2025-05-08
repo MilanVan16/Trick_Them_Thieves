@@ -18,7 +18,8 @@ public class Main_Character_Movement : MonoBehaviour
     public bool _isWalking;
     public bool _isRunning;
 
-    public GameObject stunItemPrefab;  
+    public GameObject stunItemPrefab;
+    private int stunItemCount = 0;
 
 
     #region Stamina UI
@@ -42,16 +43,23 @@ public class Main_Character_Movement : MonoBehaviour
 
         _staminaSlider.value = _currentStamina /_amountOfStaminaSeconds;
 
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            DropStunItem();
-        }
-
         if (transform.localScale.y == _crouchYScale)
             _isCrouching = true;
         if (transform.localScale.y == _standUpYScale)
             _isCrouching = false;
+
+        if (Input.GetKeyDown(KeyCode.F) && stunItemCount > 0)
+        {
+            DropStunItem();
+            stunItemCount--;
+        }
     }
+    public void PickUpStunItem()
+    {
+        stunItemCount++;
+        Debug.Log("Picked up a stun item! Total: " + stunItemCount);
+    }
+
     void DropStunItem()
     {
         Vector3 dropPosition = transform.position + -transform.forward; // Drop in front
