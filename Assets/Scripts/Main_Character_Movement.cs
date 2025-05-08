@@ -14,7 +14,9 @@ public class Main_Character_Movement : MonoBehaviour
 
     private CharacterController _controller;
 
-    private bool _isCrouching;
+    public bool _isCrouching;
+    public bool _isWalking;
+    public bool _isRunning;
 
     public GameObject stunItemPrefab;  
 
@@ -44,6 +46,11 @@ public class Main_Character_Movement : MonoBehaviour
         {
             DropStunItem();
         }
+
+        if (transform.localScale.y == _crouchYScale)
+            _isCrouching = true;
+        if (transform.localScale.y == _standUpYScale)
+            _isCrouching = false;
     }
     void DropStunItem()
     {
@@ -67,6 +74,11 @@ public class Main_Character_Movement : MonoBehaviour
         float yPosition = Input.GetAxisRaw("Vertical");
         float xPosition = Input.GetAxisRaw("Horizontal");
 
+        if (movement == Vector3.zero)
+        {
+            _isWalking = true;
+        }
+
         movement = new Vector3(xPosition, 0, yPosition);
         movement.Normalize();
         movement *= _walkspeed;
@@ -84,13 +96,17 @@ public class Main_Character_Movement : MonoBehaviour
         {
             _currentStamina -= Time.deltaTime;
             movement *= _runMultiplier;
+            _isRunning = true;
             return movement;
         }
+        else _isRunning = false;
 
         if (!Input.GetKey(KeyCode.LeftShift) && _currentStamina <= _amountOfStaminaSeconds)
         {
             _currentStamina += Time.deltaTime * _staminaReplenishMultiplier;
+            _isRunning = true;
         }
+        else _isRunning = false;
 
         return movement;
     }

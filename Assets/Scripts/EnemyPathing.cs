@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.AI;
 using System.Linq;
 using System.Collections;
+using System;
 
 public class EnemyPatrol : MonoBehaviour
 {
@@ -26,8 +27,47 @@ public class EnemyPatrol : MonoBehaviour
     private bool _isPoliceWaypointSet;
     #endregion
 
+    #region Chasing instances
+    [SerializeField]
+    private GameObject SmallRangeTrigger;
+    [SerializeField]
+    private GameObject MediumRangeTrigger;
+    [SerializeField]
+    private GameObject BigRangeTrigger;
+    private bool _isSmall;
+    private bool _isMedium;
+    private bool _isBig;
+    [SerializeField]
+    private GameObject Player;
+    private Main_Character_Movement _playerScript;
+
+    private GameObject _big;
+    private GameObject _medium;
+    private GameObject _small;
+
+    [SerializeField]
+    private Material[] Materials;
+
+    private Renderer _renderer;
+
+    private Vector3 _initialScale;
+    private Vector3 _triggerInitialScale;
+
+    [SerializeField]
+    private GameObject[] _chasingWayPoints;
+
+    private bool _isWalking;
+    private bool _isCrouching;
+    private bool _isRunning;
+    #endregion
+
     void Start()
     {
+        _initialScale = transform.localScale;
+        _triggerInitialScale = SmallRangeTrigger.transform.localScale;
+
+        _playerScript = Player.GetComponent<Main_Character_Movement>();
+
         _agent = GetComponent<NavMeshAgent>();
 
         //+2 because of the 0 objective and police objective
@@ -73,6 +113,11 @@ public class EnemyPatrol : MonoBehaviour
 
     void Update()
     {
+        if (General_Game.ChasingWaypoint != null)
+            _chasingWayPoints[0].transform.position = General_Game.ChasingWaypoint;
+        _chasingWayPoints[1].transform.position = transform.position;
+
+
         if (_agent.remainingDistance <= _agent.stoppingDistance && !_agent.pathPending)
         {
             // Go to the next waypoint
@@ -89,10 +134,46 @@ public class EnemyPatrol : MonoBehaviour
                 _agent.ResetPath();
                 _currentWaypoint = 0;
             }
-           
+        }
+        ChasingLogic();
+
+        #region Chasing logic
+
+        _isWalking = _playerScript._isWalking;
+        _isCrouching = _playerScript._isCrouching;
+        _isRunning = _playerScript._isRunning;
+
+        _isSmall = General_Game.IsSmall;
+        _isMedium = General_Game.IsMedium;
+        _isBig = General_Game.IsBig;
+
+
+        if (!_isCrouching)
+        {
+            transform.localScale = _initialScale;
         }
 
-        if(General_Game.IsPoliceCalled)
+        if (_isCrouching)
+        {
+            _isWalking = false;
+        }
+
+/*        if (_isWalking && _isMedium)
+        {
+            _renderer.material = Materials[1];
+        }
+        if (_isCrouching && _isSmall)
+        {
+            _renderer.material = Materials[0];
+        }
+        if (_isRunning && _isBig)
+        {
+            _renderer.material = Materials[2];
+
+        }*/
+        #endregion
+
+        if (General_Game.IsPoliceCalled)
         {
             if(!_isPoliceWaypointSet)
             {
@@ -111,5 +192,18 @@ public class EnemyPatrol : MonoBehaviour
 
 
 
+    }
+
+    private void ChasingLogic()
+    {
+        if (General_Game.IsChasing)
+        {
+            _currentObjectiveWaypointCollection = _waypointCollectionPerObjective.Length - 1;
+            _agent.SetDestination(General_Game.ChasingWaypoint);
+            if (_agent.remainingDistance <= _agent.stoppingDistance && !_agent.pathPending)
+            {
+                General_Game.IsChasing = false;
+            }
+        }
     }
 }

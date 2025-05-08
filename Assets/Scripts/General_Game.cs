@@ -29,6 +29,18 @@ public static class General_Game : object
     [HideInInspector]
     public static bool IsHidden;
 
+
+    [HideInInspector]
+    public static bool IsSmall;
+    [HideInInspector]
+    public static bool IsMedium;
+    [HideInInspector]
+    public static bool IsBig;
+    [HideInInspector]
+    public static bool IsChasing;
+    [HideInInspector]
+    public static Vector3 ChasingWaypoint;
+
     //DONT RESET 
     [HideInInspector]
     public static Vector3 UIOffset =  new Vector3(0,6,-2.5f);
