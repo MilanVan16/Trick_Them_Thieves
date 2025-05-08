@@ -17,27 +17,31 @@ public class FootStepScript : MonoBehaviour
 
     void Update()
     {
-        if (_playerScript._isWalking)
+        if (!General_Game.IsHidden)
         {
-            _audioSource.pitch = 1.1f;
-        }
-        if (_playerScript._isRunning)
-        {
-            _audioSource.pitch = 1.6f;
-        }
-        if (_playerScript._isCrouching)
-        {
-            _audioSource.pitch = 0.6f;
-        }
-        if (Input.GetKeyDown("w") || Input.GetKeyDown("a") || Input.GetKeyDown("s") || Input.GetKeyDown("d"))
-        {
-            footsteps();
-        }
+            if (_playerScript._isWalking)
+            {
+                _audioSource.pitch = 1.1f;
+            }
+            if (_playerScript._isRunning)
+            {
+                _audioSource.pitch = 1.6f;
+            }
+            if (_playerScript._isCrouching)
+            {
+                _audioSource.pitch = 0.6f;
+            }
+            if (Input.GetKeyDown("w") || Input.GetKeyDown("a") || Input.GetKeyDown("s") || Input.GetKeyDown("d"))
+            {
+                footsteps();
+            }
 
-        if (!Input.GetKey("w") && !Input.GetKey("a") && !Input.GetKey("s") && !Input.GetKey("d"))
-        {
-            StopFootsteps();
+            if (!Input.GetKey("w") && !Input.GetKey("a") && !Input.GetKey("s") && !Input.GetKey("d"))
+            {
+                StopFootsteps();
+            }
         }
+       
     }
 
     private void StopFootsteps()

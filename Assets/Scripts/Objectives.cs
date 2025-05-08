@@ -122,5 +122,6 @@ public class Objectives : MonoBehaviour
     private void OnDestroy()
     {
         General_Game.CurrentDoneObjectives++;
+        General_Game.Timer += General_Game.ExtraTime;
     }
 }

@@ -15,17 +15,20 @@ public class Enemy_Sight : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-
-            RaycastHit enemyToPlayer;
-            Vector3 direction = other.gameObject.transform.position - _rayPosition.position;
-
-            if (Physics.Raycast(_rayPosition.position, direction.normalized, out enemyToPlayer))
+            if(!General_Game.IsHidden)
             {
-                if(enemyToPlayer.collider.gameObject.tag == "Player")
+                RaycastHit enemyToPlayer;
+                Vector3 direction = other.gameObject.transform.position - _rayPosition.position;
+
+                if (Physics.Raycast(_rayPosition.position, direction.normalized, out enemyToPlayer))
                 {
-                    SceneManager.LoadScene("GameOver");
+                    if (enemyToPlayer.collider.gameObject.tag == "Player")
+                    {
+                        SceneManager.LoadScene("GameOver");
+                    }
                 }
             }
+          
         }
     }
    

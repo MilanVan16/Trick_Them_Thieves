@@ -53,4 +53,7 @@ public static class General_Game : object
 
     [HideInInspector]
     public static float KeyRadius = 4;
+
+    [HideInInspector]
+    public static float ExtraTime = 20;
 }
