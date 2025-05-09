@@ -46,6 +46,9 @@ public class Game_Logic : MonoBehaviour
     private Canvas _screenCanvas;
 
     private Slider _prgressBarInstantiated;
+
+    [SerializeField]
+    private AudioSource _backgroundMusic;
     #endregion
     void Start()
     {
@@ -161,6 +164,7 @@ public class Game_Logic : MonoBehaviour
     }
     private void CompletedGame()
     {
+        _backgroundMusic.pitch = 1.87f;
         if (General_Game.PoliceTimer <= 0)
         {
             SceneManager.LoadScene("GameWon");
