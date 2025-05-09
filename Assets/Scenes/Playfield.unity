@@ -1267,7 +1267,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9168633259494293487, guid: 0dcd1306a310c894e950bfa9fb9759a1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -9028,7 +9028,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1630454653868851286, guid: 9f9e185da7c8dd34e9a2221591529987, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1630454653868851286, guid: 9f9e185da7c8dd34e9a2221591529987, type: 3}
       propertyPath: m_AnchorMin.x
@@ -9036,7 +9036,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1630454653868851286, guid: 9f9e185da7c8dd34e9a2221591529987, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1630454653868851286, guid: 9f9e185da7c8dd34e9a2221591529987, type: 3}
       propertyPath: m_SizeDelta.x
@@ -9080,7 +9080,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1630454653868851286, guid: 9f9e185da7c8dd34e9a2221591529987, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 667
+      value: -53
       objectReference: {fileID: 0}
     - target: {fileID: 1630454653868851286, guid: 9f9e185da7c8dd34e9a2221591529987, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -9428,7 +9428,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -109, y: 187}
+  m_AnchoredPosition: {x: -245, y: 187}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1915153236
@@ -10315,7 +10315,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -109, y: 78}
+  m_AnchoredPosition: {x: -245, y: 78}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2086578309
@@ -10612,6 +10612,10 @@ PrefabInstance:
     - target: {fileID: 9168633259494293487, guid: 0dcd1306a310c894e950bfa9fb9759a1, type: 3}
       propertyPath: m_Name
       value: StunItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 9168633259494293487, guid: 0dcd1306a310c894e950bfa9fb9759a1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}

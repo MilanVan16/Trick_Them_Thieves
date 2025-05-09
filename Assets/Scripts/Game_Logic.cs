@@ -55,6 +55,8 @@ public class Game_Logic : MonoBehaviour
         General_Game.ObjectivesCount = 5;
         General_Game.ObjectiveRadius = 2;
         General_Game.PoliceCalledThievesMultiplier = 2f;
+        General_Game.KeyCount = 0;
+        General_Game.StunItemCount = 0;
 
         General_Game.IsHidden = false;
         General_Game.IsPoliceCalled = false;
