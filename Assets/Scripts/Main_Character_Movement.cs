@@ -61,7 +61,7 @@ public class Main_Character_Movement : MonoBehaviour
 
     void DropStunItem()
     {
-        Vector3 dropPosition = transform.position + -transform.forward; // Drop in front
+        Vector3 dropPosition = transform.position + -transform.forward;
         Instantiate(stunItemPrefab, dropPosition, Quaternion.identity);
     }
 
