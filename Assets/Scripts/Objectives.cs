@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -33,6 +34,10 @@ public class Objectives : MonoBehaviour
     private Canvas _screenCanvas;
 
     private Slider _prgressBarInstantiated;
+
+    [Header("Key Text")]
+    [SerializeField]
+    private TextMeshProUGUI _keys;
     void Start()
     {
         if (_timeBasedObjective)
@@ -46,7 +51,8 @@ public class Objectives : MonoBehaviour
         }
 
         _prgressBarInstantiated = Instantiate(_progressBarPrefab);
-       // _prgressBarInstantiated.transform.position += new Vector3(_screenCanvas.renderingDisplaySize.x, 0, 0);
+        _prgressBarInstantiated.transform.position = new Vector3(_keys.transform.position.x - 100, _keys.transform.position.y + 150, 0);
+        _prgressBarInstantiated.transform.localScale = _prgressBarInstantiated.transform.localScale / 3;
         _prgressBarInstantiated.transform.SetParent(_screenCanvas.transform);
         _prgressBarInstantiated.gameObject.SetActive(false);
 
@@ -125,7 +131,7 @@ public class Objectives : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E))
             {
-
+                _prgressBarInstantiated.gameObject.SetActive(true);
                 if (hit.collider.gameObject == this.gameObject)
                 {
                     TimeBasedObjective();
