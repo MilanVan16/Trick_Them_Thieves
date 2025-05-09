@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Door : MonoBehaviour
@@ -62,6 +61,7 @@ public class Door : MonoBehaviour
                     {
                         IsKeyPickedUp = true;
                         Destroy(_key);
+                        General_Game.KeyCount++;
                     }
                 }
             }
@@ -70,7 +70,7 @@ public class Door : MonoBehaviour
     }
     private void DoorLogic()
     {
-        Vector3 vectorFromPlayerToDoor =_player.transform.position - transform.position ;
+        Vector3 vectorFromPlayerToDoor = _player.transform.position - transform.position;
         float distance = vectorFromPlayerToDoor.magnitude;
 
         if (distance <= General_Game.DoorRadius)
@@ -85,6 +85,7 @@ public class Door : MonoBehaviour
                         if (IsKeyPickedUp)
                         {
                             Destroy(gameObject);
+                            General_Game.KeyCount--;
                         }
                     }
                 }

@@ -41,6 +41,12 @@ public static class General_Game : object
     [HideInInspector]
     public static Vector3 ChasingWaypoint;
 
+    [HideInInspector]
+    public static int StunItemCount;
+    [HideInInspector]
+    public static int KeyCount;
+
+
     //DONT RESET 
     [HideInInspector]
     public static Vector3 UIOffset =  new Vector3(0,6,-2.5f);

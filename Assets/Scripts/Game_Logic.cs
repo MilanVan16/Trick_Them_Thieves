@@ -24,6 +24,14 @@ public class Game_Logic : MonoBehaviour
     private bool _policeIsCalled;
     #endregion
 
+    #region
+    [Header("Inventory")]
+    [SerializeField]
+    private TextMeshProUGUI _keys;
+    [SerializeField]
+    private TextMeshProUGUI _beartraps;
+    #endregion
+
     #region Game Over
     // [Header("Game Over")]
 
@@ -80,6 +88,14 @@ public class Game_Logic : MonoBehaviour
         {
             CompletedGame();
         }
+
+        InventoryDisplay();
+    }
+
+    private void InventoryDisplay()
+    {
+        _keys.text = $"Keys: {General_Game.KeyCount}";
+        _beartraps.text = $"Bear traps: {General_Game.StunItemCount}";
     }
 
     private void CountTimer()

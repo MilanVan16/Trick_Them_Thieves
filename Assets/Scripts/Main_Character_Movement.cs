@@ -47,16 +47,16 @@ public class Main_Character_Movement : MonoBehaviour
         if (transform.localScale.y == _standUpYScale)
             _isCrouching = false;
 
-        if (Input.GetKeyDown(KeyCode.F) && stunItemCount > 0)
+        if (Input.GetKeyDown(KeyCode.F) && General_Game.StunItemCount > 0)
         {
             DropStunItem();
-            stunItemCount--;
+            General_Game.StunItemCount--;
         }
     }
     public void PickUpStunItem()
     {
-        stunItemCount++;
-        Debug.Log("Picked up a stun item! Total: " + stunItemCount);
+        General_Game.StunItemCount++;
+        Debug.Log("Picked up a stun item! Total: " + General_Game.StunItemCount);
     }
 
     void DropStunItem()
