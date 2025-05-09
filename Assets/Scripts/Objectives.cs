@@ -46,7 +46,7 @@ public class Objectives : MonoBehaviour
         }
 
         _prgressBarInstantiated = Instantiate(_progressBarPrefab);
-        _prgressBarInstantiated.transform.position += new Vector3(_screenCanvas.renderingDisplaySize.x, 0, 0);
+       // _prgressBarInstantiated.transform.position += new Vector3(_screenCanvas.renderingDisplaySize.x, 0, 0);
         _prgressBarInstantiated.transform.SetParent(_screenCanvas.transform);
         _prgressBarInstantiated.gameObject.SetActive(false);
 
