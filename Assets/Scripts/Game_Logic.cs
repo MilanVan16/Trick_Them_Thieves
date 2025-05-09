@@ -25,8 +25,19 @@ public class Game_Logic : MonoBehaviour
     #endregion
 
     #region Game Over
-   // [Header("Game Over")]
+    // [Header("Game Over")]
 
+    #endregion
+
+    #region Progress bar
+    [Header("ProgressBar")]
+    [SerializeField]
+    private Slider _progressBarPrefab;
+
+    [SerializeField]
+    private Canvas _screenCanvas;
+
+    private Slider _prgressBarInstantiated;
     #endregion
     void Start()
     {
@@ -39,6 +50,11 @@ public class Game_Logic : MonoBehaviour
 
         General_Game.IsHidden = false;
         General_Game.IsPoliceCalled = false;
+
+        _prgressBarInstantiated = Instantiate(_progressBarPrefab);
+        _prgressBarInstantiated.transform.position += new Vector3(_screenCanvas.renderingDisplaySize.x, 0, 0);
+        _prgressBarInstantiated.transform.SetParent(_screenCanvas.transform);
+        _prgressBarInstantiated.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -94,6 +110,13 @@ public class Game_Logic : MonoBehaviour
         {
             _objectives.faceColor = Color.green;
             _objectives.text = $"Call police: Hold F";
+
+            if(_policeCallingTimer < _policeCallingDuration)
+            {
+                _prgressBarInstantiated.gameObject.SetActive(true);
+                ProgressBarUpdate();
+            }
+
         }
 
         if(Input.GetKey(KeyCode.F))
@@ -112,6 +135,8 @@ public class Game_Logic : MonoBehaviour
             _objectives.faceColor = Color.red;
             General_Game.PoliceTimer -= Time.deltaTime;
             General_Game.IsPoliceCalled = true;
+
+            _prgressBarInstantiated.gameObject.SetActive(false);
         }
 
        
@@ -122,5 +147,9 @@ public class Game_Logic : MonoBehaviour
         {
             SceneManager.LoadScene("GameWon");
         }
+    }
+    private void ProgressBarUpdate()
+    {
+        _prgressBarInstantiated.value = 1 - _policeCallingTimer / _policeCallingDuration;
     }
 }

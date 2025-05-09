@@ -141,18 +141,18 @@ public class Main_Character_Movement : MonoBehaviour
     }
     private void Crouching()
     {
-        if (Input.GetKeyDown(KeyCode.R) && _isCrouching == false)
+        if (Input.GetKeyDown(KeyCode.LeftControl) && _isCrouching == false)
         {
             StartCrouching();
         }
 
-        if (Input.GetKeyDown(KeyCode.R) && _isCrouching == true)
+        if (Input.GetKeyDown(KeyCode.LeftControl) && _isCrouching == true)
         {
             StandUp();
         }
 
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             _isCrouching = !_isCrouching;
         }

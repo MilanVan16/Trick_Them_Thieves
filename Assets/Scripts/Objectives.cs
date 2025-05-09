@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Objectives : MonoBehaviour
 {
@@ -23,6 +24,15 @@ public class Objectives : MonoBehaviour
     [Header("Don't change")]
     [SerializeField]
     private Material _timeBasedObjectiveMaterial, _pickupObjectiveMaterial;
+
+    [Header("ProgressBar")]
+    [SerializeField]
+    private Slider _progressBarPrefab;
+
+    [SerializeField]
+    private Canvas _screenCanvas;
+
+    private Slider _prgressBarInstantiated;
     void Start()
     {
         if (_timeBasedObjective)
@@ -34,6 +44,12 @@ public class Objectives : MonoBehaviour
         {
             gameObject.GetComponent<MeshRenderer>().material = _pickupObjectiveMaterial;
         }
+
+        _prgressBarInstantiated = Instantiate(_progressBarPrefab);
+        _prgressBarInstantiated.transform.position += new Vector3(_screenCanvas.renderingDisplaySize.x, 0, 0);
+        _prgressBarInstantiated.transform.SetParent(_screenCanvas.transform);
+        _prgressBarInstantiated.gameObject.SetActive(false);
+
     }
 
     void Update()
@@ -52,6 +68,14 @@ public class Objectives : MonoBehaviour
         {
             Objective(vectorFromCharacterToThis);
         }
+        else
+        {
+            if(_prgressBarInstantiated != null)
+            {
+                _prgressBarInstantiated.gameObject.SetActive(false);
+            }
+
+        }
 
     }
 
@@ -65,6 +89,7 @@ public class Objectives : MonoBehaviour
         if (_timeBasedObjective)
         {
             TimeBasedObjectiveInput(vectorFromCharacterToThis);
+
         }
 
     }
@@ -92,21 +117,27 @@ public class Objectives : MonoBehaviour
 
     private void TimeBasedObjectiveInput(Vector3 vectorFromCharacterToThis)
     {
-        if (Input.GetKey(KeyCode.E))
+
+        RaycastHit hit;
+
+
+        if (Physics.Raycast(_mainCharacter.transform.position, vectorFromCharacterToThis.normalized, out hit))
         {
-            RaycastHit hit;
-
-
-            if (Physics.Raycast(_mainCharacter.transform.position, vectorFromCharacterToThis.normalized, out hit))
+            if (Input.GetKey(KeyCode.E))
             {
+
                 if (hit.collider.gameObject == this.gameObject)
                 {
                     TimeBasedObjective();
                 }
 
+
             }
 
+            ProgressBarUpdate();
+            _prgressBarInstantiated.gameObject.SetActive(true);
         }
+       
 
     }
     private void TimeBasedObjective()
@@ -123,5 +154,17 @@ public class Objectives : MonoBehaviour
     {
         General_Game.CurrentDoneObjectives++;
         General_Game.Timer += General_Game.ExtraTime;
+
+        if (_prgressBarInstantiated != null)
+        {
+            Destroy(_prgressBarInstantiated.gameObject);
+        }
     }
+
+    private void ProgressBarUpdate()
+    {
+        _prgressBarInstantiated.value = 1 - _currentWorkTimeObjective / _timeBasedObjectiveDuration ;
+    }
+
+    
 }
