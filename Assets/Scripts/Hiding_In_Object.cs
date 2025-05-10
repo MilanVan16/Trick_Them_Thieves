@@ -8,6 +8,8 @@ public class Hiding_In_Object : MonoBehaviour
     [SerializeField]
     private float _hidingRadius;
 
+    private bool _isHidenInThisCloset;
+
     private bool _enteredOrExitedHiddenThisFrame;
 
     void Start()
@@ -45,6 +47,7 @@ public class Hiding_In_Object : MonoBehaviour
 
                         _mainCharacter.GetComponent<Main_Character_Movement>().enabled = false;
                         General_Game.IsHidden = true;
+                        _isHidenInThisCloset = true;
                         _enteredOrExitedHiddenThisFrame = true;
                     }
                 }
@@ -56,7 +59,7 @@ public class Hiding_In_Object : MonoBehaviour
         if (!_enteredOrExitedHiddenThisFrame)
         {
             //for getting out of the hiding place
-            if (Input.GetKeyDown(KeyCode.E) && General_Game.IsHidden == true)
+            if (Input.GetKeyDown(KeyCode.E) && General_Game.IsHidden == true && _isHidenInThisCloset == true)
             {
                 _mainCharacter.GetComponent<MeshRenderer>().enabled = true;
 
@@ -68,6 +71,7 @@ public class Hiding_In_Object : MonoBehaviour
                     child.enabled = true;
                 }
 
+                _isHidenInThisCloset = false;
                 General_Game.IsHidden = false;
             }
         }
