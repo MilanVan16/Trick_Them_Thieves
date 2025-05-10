@@ -28,30 +28,33 @@ public class Hiding_In_Object : MonoBehaviour
 
         if (distance <= _hidingRadius)
         {
-            if (Physics.Raycast(_mainCharacter.transform.position, vectorFromCharacterToThis.normalized, out hit))
+            if (General_Game.IsPoliceCalled == false)
             {
-                //the raycast so that there is no wall between the character and the closet
-                if (hit.collider.gameObject == this.gameObject)
+                if (Physics.Raycast(_mainCharacter.transform.position, vectorFromCharacterToThis.normalized, out hit))
                 {
-                    //looking if he isn't hidden yet and presses E to get in
-                    if (Input.GetKeyDown(KeyCode.E) && General_Game.IsHidden == false)
+                    //the raycast so that there is no wall between the character and the closet
+                    if (hit.collider.gameObject == this.gameObject)
                     {
-                        _mainCharacter.GetComponent<MeshRenderer>().enabled = false;
-
-                        //to also disable they eyes
-                        MeshRenderer[] childrenMeshRenderers = _mainCharacter.GetComponentsInChildren<MeshRenderer>();
-                        foreach (MeshRenderer child in childrenMeshRenderers)
+                        //looking if he isn't hidden yet and presses E to get in
+                        if (Input.GetKeyDown(KeyCode.E) && General_Game.IsHidden == false)
                         {
-                            child.enabled = false;
+                            _mainCharacter.GetComponent<MeshRenderer>().enabled = false;
+
+                            //to also disable they eyes
+                            MeshRenderer[] childrenMeshRenderers = _mainCharacter.GetComponentsInChildren<MeshRenderer>();
+                            foreach (MeshRenderer child in childrenMeshRenderers)
+                            {
+                                child.enabled = false;
+                            }
+
+                            _mainCharacter.GetComponent<Main_Character_Movement>().enabled = false;
+                            General_Game.IsHidden = true;
+                            _isHidenInThisCloset = true;
+                            _enteredOrExitedHiddenThisFrame = true;
                         }
-
-                        _mainCharacter.GetComponent<Main_Character_Movement>().enabled = false;
-                        General_Game.IsHidden = true;
-                        _isHidenInThisCloset = true;
-                        _enteredOrExitedHiddenThisFrame = true;
                     }
-                }
 
+                }
             }
         }
 

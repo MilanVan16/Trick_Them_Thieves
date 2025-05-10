@@ -59,6 +59,7 @@ public class Game_Logic : MonoBehaviour
         General_Game.ObjectiveRadius = 2;
         General_Game.PoliceCalledThievesMultiplier = 2f;
         General_Game.KeyCount = 0;
+        General_Game.BearTrapCount = 0;
 
         General_Game.IsHidden = false;
         General_Game.IsPoliceCalled = false;
@@ -159,7 +160,6 @@ public class Game_Logic : MonoBehaviour
 
             _prgressBarInstantiated.gameObject.SetActive(false);
         }
-
        
     }
     private void CompletedGame()

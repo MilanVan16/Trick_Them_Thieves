@@ -17,6 +17,10 @@ public class FootStepScript : MonoBehaviour
 
     void Update()
     {
+        if (General_Game.IsHidden)
+        {
+            StopFootsteps();
+        }
         if (!General_Game.IsHidden)
         {
             if (_playerScript._isWalking)

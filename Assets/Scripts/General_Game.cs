@@ -51,7 +51,7 @@ public static class General_Game : object
     public static float ExtraTime = 40;
 
     [HideInInspector]
-    public static float StunDuration = 10;
+    public static float StunDuration = 7;
 
     [HideInInspector]
     public static float ExtraSpeedPerObjective = 0.75f;
