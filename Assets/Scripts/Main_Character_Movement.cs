@@ -17,8 +17,6 @@ public class Main_Character_Movement : MonoBehaviour
     public bool _isWalking;
     public bool _isRunning;
 
-    public GameObject stunItemPrefab;
-    private int stunItemCount = 0;
 
 
     #region Stamina UI
@@ -26,43 +24,55 @@ public class Main_Character_Movement : MonoBehaviour
     [SerializeField]
     private Slider _staminaSlider;
     #endregion
+
+    #region Beartrap
+    [Header("bearTrap")]
+    [SerializeField]
+    private GameObject _bearTrapPlaceDownPrefab;
+    #endregion
+
+    #region sound
+    [SerializeField]
+    private float _crouchingSoundScale;
+    [SerializeField]
+    private float _walkingSoundScale;
+    [SerializeField]
+    private float _runningSoundScale;
+    [SerializeField]
+    private float _objectivesSoundScale;
+
+    private float _currentScale;
+
+    [SerializeField]
+    private GameObject _soundTrigger;
+
+    #endregion sound
     void Start()
     {
         transform.position = new Vector3(_spawnPosition.transform.position.x, _spawnPosition.transform.position.y + _standUpYScale, _spawnPosition.transform.position.z);
 
         _controller = gameObject.GetComponent<CharacterController>();
         _currentStamina = _amountOfStaminaSeconds;
+
+        _currentScale = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
         Movement();
-        Crouching();
+
 
         _staminaSlider.value = _currentStamina / _amountOfStaminaSeconds;
 
-        if (transform.localScale.y == _crouchYScale)
-            _isCrouching = true;
-        if (transform.localScale.y == _standUpYScale)
-            _isCrouching = false;
+        BearTrapUsing();
 
-        if (Input.GetKeyDown(KeyCode.F) && General_Game.StunItemCount > 0)
+        if(General_Game.IsWorkingOnObjective)
         {
-            DropStunItem();
-            General_Game.StunItemCount--;
+            _currentScale = _objectivesSoundScale;
         }
-    }
-    public void PickUpStunItem()
-    {
-        General_Game.StunItemCount++;
-        Debug.Log("Picked up a stun item! Total: " + General_Game.StunItemCount);
-    }
 
-    void DropStunItem()
-    {
-        Vector3 dropPosition = transform.position + -transform.forward;
-        Instantiate(stunItemPrefab, dropPosition, Quaternion.identity);
+        ChangeSoundRadius();
     }
 
     private void Movement()
@@ -72,6 +82,9 @@ public class Main_Character_Movement : MonoBehaviour
         movement = Walking(movement);
         if (!_isCrouching)
             movement = Running(movement);
+
+        Crouching(movement);
+
         CharacterLookAtRun(movement);
 
         _controller.Move(movement * Time.deltaTime);
@@ -82,14 +95,25 @@ public class Main_Character_Movement : MonoBehaviour
         float yPosition = Input.GetAxisRaw("Vertical");
         float xPosition = Input.GetAxisRaw("Horizontal");
 
+
+        movement = new Vector3(xPosition, 0, yPosition);
+
         if (movement == Vector3.zero)
         {
             _isWalking = true;
+            _currentScale = 0;
         }
-
-        movement = new Vector3(xPosition, 0, yPosition);
+        if (movement != Vector3.zero)
+        {
+            _currentScale = _walkingSoundScale;
+        }
         movement.Normalize();
         movement *= _walkspeed;
+
+        if(_isCrouching)
+        {
+            movement /= 1.5f;
+        }
 
         return movement;
     }
@@ -105,6 +129,7 @@ public class Main_Character_Movement : MonoBehaviour
             _currentStamina -= Time.deltaTime;
             movement *= _runMultiplier;
             _isRunning = true;
+            _currentScale = _runningSoundScale;
             return movement;
         }
         else _isRunning = false;
@@ -139,7 +164,7 @@ public class Main_Character_Movement : MonoBehaviour
         }
 
     }
-    private void Crouching()
+    private void Crouching(Vector3 movement)
     {
         if (Input.GetKeyDown(KeyCode.LeftControl) && _isCrouching == false)
         {
@@ -156,6 +181,15 @@ public class Main_Character_Movement : MonoBehaviour
         {
             _isCrouching = !_isCrouching;
         }
+
+        if (_isCrouching)
+        {
+            if(movement != Vector3.zero)
+            {
+                _currentScale = _crouchingSoundScale;
+            }
+
+        }
     }
     private void StartCrouching()
     {
@@ -168,6 +202,29 @@ public class Main_Character_Movement : MonoBehaviour
         transform.localScale = new Vector3(transform.localScale.x, _standUpYScale, transform.localScale.z);
         transform.position = new Vector3(transform.position.x, transform.position.y + _standUpYScale / 2, transform.position.z);
         Physics.SyncTransforms();
+    }
+
+    private void BearTrapUsing()
+    {
+        if (General_Game.BearTrapCount != 0)
+        {
+            if (Input.GetMouseButtonDown(1))
+            {
+                PlaceDownBeartrap();
+                General_Game.BearTrapCount--;
+            }
+        }
+    }
+
+    private void PlaceDownBeartrap()
+    {
+        GameObject beartrap = Instantiate(_bearTrapPlaceDownPrefab);
+        beartrap.transform.position = transform.position - new Vector3(0, transform.localScale.y, 0) + new Vector3(0, _bearTrapPlaceDownPrefab.transform.localScale.y, 0);
+    }
+
+    private void ChangeSoundRadius()
+    {
+        _soundTrigger.transform.localScale = new Vector3(_currentScale, _currentScale, _currentScale);
     }
 
 }

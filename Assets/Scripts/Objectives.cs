@@ -134,10 +134,15 @@ public class Objectives : MonoBehaviour
                 _prgressBarInstantiated.gameObject.SetActive(true);
                 if (hit.collider.gameObject == this.gameObject)
                 {
+                    General_Game.IsWorkingOnObjective = true;
                     TimeBasedObjective();
                 }
 
 
+            }
+            else
+            {
+                General_Game.IsWorkingOnObjective = false;
             }
 
             ProgressBarUpdate();
@@ -152,6 +157,7 @@ public class Objectives : MonoBehaviour
 
         if (_currentWorkTimeObjective >= _timeBasedObjectiveDuration)
         {
+            General_Game.IsWorkingOnObjective = false;
             Destroy(gameObject);
         }
     }

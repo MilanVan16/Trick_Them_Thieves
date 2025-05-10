@@ -22,30 +22,17 @@ public static class General_Game : object
     [HideInInspector]
     public static int ObjectivesCount = 5;
 
-    
-
-
-
     [HideInInspector]
     public static bool IsHidden;
 
-
-    [HideInInspector]
-    public static bool IsSmall;
-    [HideInInspector]
-    public static bool IsMedium;
-    [HideInInspector]
-    public static bool IsBig;
-    [HideInInspector]
-    public static bool IsChasing;
-    [HideInInspector]
-    public static Vector3 ChasingWaypoint;
-
-    [HideInInspector]
-    public static int StunItemCount;
     [HideInInspector]
     public static int KeyCount;
 
+    [HideInInspector]
+    public static int BearTrapCount;
+
+    [HideInInspector]
+    public static bool IsWorkingOnObjective;
 
     //DONT RESET 
     [HideInInspector]
@@ -61,5 +48,11 @@ public static class General_Game : object
     public static float KeyRadius = 4;
 
     [HideInInspector]
-    public static float ExtraTime = 20;
+    public static float ExtraTime = 40;
+
+    [HideInInspector]
+    public static float StunDuration = 10;
+
+    [HideInInspector]
+    public static float ExtraSpeedPerObjective = 0.75f;
 }

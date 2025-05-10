@@ -48,21 +48,21 @@ public class Game_Logic : MonoBehaviour
     private Slider _prgressBarInstantiated;
 
     [SerializeField]
-    private AudioSource _backgroundMusic;
+  //  private AudioSource _backgroundMusic;
     #endregion
     void Start()
     {
-        General_Game.Timer = 60;
+        General_Game.Timer = 120;
         General_Game.PoliceTimer = 60;
         General_Game.CurrentDoneObjectives = 0;
         General_Game.ObjectivesCount = 5;
         General_Game.ObjectiveRadius = 2;
         General_Game.PoliceCalledThievesMultiplier = 2f;
         General_Game.KeyCount = 0;
-        General_Game.StunItemCount = 0;
 
         General_Game.IsHidden = false;
         General_Game.IsPoliceCalled = false;
+        General_Game.IsWorkingOnObjective = false;
 
         _prgressBarInstantiated = Instantiate(_progressBarPrefab);
         _prgressBarInstantiated.transform.position += new Vector3(_screenCanvas.renderingDisplaySize.x, 0, 0);
@@ -100,7 +100,7 @@ public class Game_Logic : MonoBehaviour
     private void InventoryDisplay()
     {
         _keys.text = $"Keys: {General_Game.KeyCount}";
-        _beartraps.text = $"Bear traps: {General_Game.StunItemCount}";
+        _beartraps.text = $"Beartraps: {General_Game.BearTrapCount}";
     }
 
     private void CountTimer()
@@ -164,7 +164,7 @@ public class Game_Logic : MonoBehaviour
     }
     private void CompletedGame()
     {
-        _backgroundMusic.pitch = 1.87f;
+      //  _backgroundMusic.pitch = 1.87f;
         if (General_Game.PoliceTimer <= 0)
         {
             SceneManager.LoadScene("GameWon");
